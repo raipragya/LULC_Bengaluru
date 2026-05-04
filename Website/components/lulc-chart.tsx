@@ -96,10 +96,14 @@ export function LulcChart({
               fontSize: 11,
               marginBottom: 4,
             }}
-            formatter={(value: number, name: string) => [
-              `${value}%`,
-              name.charAt(0).toUpperCase() + name.slice(1),
-            ]}
+            formatter={(value, name) => {
+              const val = typeof value === "number" ? value : 0
+              const strName = typeof name === "string" ? name : String(name || "")
+              return [
+                `${val}%`,
+                strName ? strName.charAt(0).toUpperCase() + strName.slice(1) : "",
+              ]
+            }}
           />
 
           <Area
