@@ -38,7 +38,7 @@ export function SiteHeader() {
 
         <Button variant="ghost" size="sm" asChild className="gap-1.5">
           <a
-            href="https://github.com"
+            href="https://github.com/raipragya/UrbanHeatPrediction"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View source on GitHub"
