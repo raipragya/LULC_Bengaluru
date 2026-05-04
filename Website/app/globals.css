@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Scientific Premium dark palette (default) */
+  --background: oklch(0.17 0.022 250);
+  --foreground: oklch(0.97 0.005 250);
+
+  --card: oklch(0.22 0.025 250);
+  --card-foreground: oklch(0.97 0.005 250);
+
+  --popover: oklch(0.20 0.025 250);
+  --popover-foreground: oklch(0.97 0.005 250);
+
+  --primary: oklch(0.78 0.13 195);
+  --primary-foreground: oklch(0.15 0.02 250);
+
+  --secondary: oklch(0.27 0.02 250);
+  --secondary-foreground: oklch(0.97 0.005 250);
+
+  --muted: oklch(0.25 0.02 250);
+  --muted-foreground: oklch(0.72 0.018 250);
+
+  --accent: oklch(0.30 0.04 200);
+  --accent-foreground: oklch(0.97 0.005 250);
+
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.30 0.022 250);
+  --input: oklch(0.27 0.02 250);
+  --ring: oklch(0.78 0.13 195);
+
+  --radius: 0.75rem;
+
+  /* LULC categorical legend (used consistently across maps, charts, legend chips) */
+  --lulc-developed: oklch(0.68 0.21 38);
+  --lulc-vegetation: oklch(0.55 0.16 145);
+  --lulc-wetland: oklch(0.72 0.13 185);
+  --lulc-water: oklch(0.60 0.17 245);
+
+  --chart-1: var(--lulc-developed);
+  --chart-2: var(--lulc-vegetation);
+  --chart-3: var(--lulc-wetland);
+  --chart-4: var(--lulc-water);
+  --chart-5: oklch(0.78 0.13 195);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-lulc-developed: var(--lulc-developed);
+  --color-lulc-vegetation: var(--lulc-vegetation);
+  --color-lulc-wetland: var(--lulc-wetland);
+  --color-lulc-water: var(--lulc-water);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Glassmorphism utility used by floating cards over maps */
+@utility glass {
+  background-color: color-mix(in oklab, var(--card) 65%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+}
+
+/* Subtle radial glow for hero / map backgrounds */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--border) 50%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 50%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
