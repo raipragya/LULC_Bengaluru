@@ -8,6 +8,8 @@ import {
   Droplets,
   Sparkles,
   Thermometer,
+  TrendingDown,
+  TrendingUp,
   TreePine,
 } from "lucide-react"
 import { LulcMap } from "@/components/lulc-map"
@@ -63,7 +65,7 @@ export function FuturePrediction() {
           Projected Urban Sprawl &amp; Environmental Forecast
         </h2>
         <p className="text-pretty leading-relaxed text-muted-foreground">
-          Run a Cellular Automata-Artificial Neural Network (CA-ANN) simulation calibrated
+          Run a deep learning spatial simulation calibrated
           on the 2005–2025 transition matrix to project Bangalore&apos;s LULC for the
           decades ahead.
         </p>
@@ -85,7 +87,7 @@ function IdleCard({ onRun }: { onRun: () => void }) {
       <div className="relative flex flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
         <div className="flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
           <Cpu className="h-3 w-3 text-primary" aria-hidden />
-          CA-ANN · Bangalore · 30 m
+          Deep Learning · Bangalore · 30 m
         </div>
 
         <h3 className="max-w-xl text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
@@ -93,12 +95,12 @@ function IdleCard({ onRun }: { onRun: () => void }) {
         </h3>
         <p className="max-w-md text-sm text-pretty text-muted-foreground">
           Simulate two decades of urban transition based on calibrated transition
-          probabilities and ANN-learned spatial drivers.
+          probabilities and machine-learning-inferred spatial drivers.
         </p>
 
         <Button size="lg" onClick={onRun} className="gap-2">
           <Sparkles className="h-4 w-4" aria-hidden />
-          Run CA-ANN Simulation
+          Run Prediction Simulation
         </Button>
 
         <dl className="mt-2 grid grid-cols-3 gap-6 text-left">
@@ -213,7 +215,7 @@ function ReadyView() {
                 <div className="text-base font-semibold">{year}</div>
               </div>
               <span className="rounded-md bg-primary/15 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-primary ring-1 ring-primary/30">
-                CA-ANN
+                XGBoost
               </span>
             </figcaption>
           </figure>
@@ -244,45 +246,46 @@ function ReadyView() {
             </Button>
           </div>
 
+          <div className="grid grid-cols-2 gap-3">
+            <ForecastStat label="Built-up (2025→2045)" value="+8.40" hint="pp" trend="up" tone="developed" />
+            <ForecastStat label="Water (2025→2045)" value="−8.81" hint="pp" trend="down" tone="water" />
+            <ForecastStat label="Vegetation (2025→2045)" value="−6.76" hint="pp" trend="down" tone="vegetation" />
+            <ForecastStat label="Bare Land (2025→2045)" value="+7.16" hint="pp" trend="up" tone="wetland" />
+          </div>
+
           <div className="grid grid-cols-1 gap-2.5">
-            <Risk
-              icon={<TreePine className="h-4 w-4" aria-hidden />}
-              tone="vegetation"
-              title="Vegetation collapse"
-              detail="Secondary corridors fully consumed by 2035."
-            />
-            <Risk
-              icon={<Droplets className="h-4 w-4" aria-hidden />}
-              tone="water"
-              title="Minor lake loss"
-              detail="Near-total loss of localized minor water bodies."
-            />
             <Risk
               icon={<Thermometer className="h-4 w-4" aria-hidden />}
               tone="developed"
-              title="Micro-climate warming"
-              detail="UHI intensification across core metropolitan grid."
+              title="Built-up: 23.90% → 32.30%"
+              detail="Urban expansion continues (+6.08 pp by 2035, +2.32 pp by 2045)."
+            />
+            <Risk
+              icon={<TreePine className="h-4 w-4" aria-hidden />}
+              tone="vegetation"
+              title="Vegetation: 38.91% → 32.15%"
+              detail="Steady green cover loss of 6.76 pp over 20 years."
             />
             <Risk
               icon={<AlertTriangle className="h-4 w-4" aria-hidden />}
               tone="wetland"
-              title="Wetland encroachment"
-              detail="Vulnerable wetland zones absorbed by 2045."
+              title="Bare Land: 1.51% → 8.68%"
+              detail="5.7× surge — active land clearing outpacing construction."
+            />
+            <Risk
+              icon={<Droplets className="h-4 w-4" aria-hidden />}
+              tone="water"
+              title="Water: 35.68% → 26.87%"
+              detail="Largest loss (−8.81 pp) — wetland/lake encroachment intensifies."
             />
           </div>
 
           <p className="text-sm text-pretty leading-relaxed text-muted-foreground">
-            Based on our Cellular Automata-Artificial Neural Network (CA-ANN) spatial
-            modeling, the trajectory for 2035 and 2045 indicates a critical shift in
-            Bangalore&apos;s landscape. If current transition probabilities hold, the
-            &quot;Developed&quot; footprint will dominate the metropolitan boundary by
-            2035, engulfing the remaining secondary vegetation corridors. By 2045, the
-            model predicts that core urban density will force expansion into previously
-            vulnerable wetland zones. The simulation suggests a near-total loss of
-            localized minor water bodies, consolidating only major lakes. This projected
-            LULC transition strongly indicates that without immediate policy intervention,
-            Bangalore will face severe micro-climate warming and acute water stress by
-            the mid-2040s.
+            The XGBoost model projects built-up area growing from 23.90% to 32.30%
+            by 2045, with water bodies suffering the steepest decline (−8.81 pp).
+            Bare land surges 5.7× indicating active peri-urban clearing. The
+            2025–2035 decade is a critical intervention window before these
+            changes become irreversible.
           </p>
         </article>
       </div>
@@ -321,6 +324,47 @@ function Risk({
       <div className="flex flex-col gap-0.5">
         <span className="text-sm font-medium">{title}</span>
         <span className="text-xs text-muted-foreground">{detail}</span>
+      </div>
+    </div>
+  )
+}
+
+function ForecastStat({
+  label,
+  value,
+  hint,
+  trend,
+  tone,
+}: {
+  label: string
+  value: string
+  hint?: string
+  trend: "up" | "down"
+  tone: "developed" | "vegetation" | "water" | "wetland"
+}) {
+  const Icon = trend === "up" ? TrendingUp : TrendingDown
+  const toneClass = {
+    developed: "text-lulc-developed",
+    vegetation: "text-lulc-vegetation",
+    wetland: "text-lulc-wetland",
+    water: "text-lulc-water",
+  }[tone]
+
+  return (
+    <div className="rounded-lg border border-border bg-background/40 p-3">
+      <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+        <span>{label}</span>
+      </div>
+      <div className="mt-1.5 flex items-baseline gap-2">
+        <span className={cn("font-mono text-xl font-semibold tracking-tight", toneClass)}>
+          {value}
+        </span>
+        {hint && (
+          <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+            {hint}
+          </span>
+        )}
+        <Icon className={cn("ml-auto h-3.5 w-3.5", toneClass)} aria-hidden />
       </div>
     </div>
   )

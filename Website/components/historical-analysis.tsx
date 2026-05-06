@@ -102,30 +102,30 @@ export function HistoricalAnalysis() {
 
           <div className="grid grid-cols-2 gap-3">
             <Stat
-              label="Developed (2015–2025)"
-              value="+7.3%"
-              hint="annual"
+              label="Built-up (2015–2025)"
+              value="+10.12"
+              hint="pp / decade"
               trend="up"
               tone="developed"
             />
             <Stat
-              label="Water bodies"
-              value="−1.8%"
-              hint="annual"
+              label="Water (2015–2025)"
+              value="−7.82"
+              hint="pp / decade"
               trend="down"
               tone="water"
             />
             <Stat
-              label="Developed (2005–2015)"
-              value="+2.9%"
-              hint="annual"
+              label="Built-up (2005–2015)"
+              value="+3.10"
+              hint="pp / decade"
               trend="up"
               tone="developed"
             />
             <Stat
-              label="Vegetation"
-              value="−4.6%"
-              hint="annual"
+              label="Vegetation (2005–2025)"
+              value="−2.94"
+              hint="pp / decade"
               trend="down"
               tone="vegetation"
             />
@@ -133,14 +133,12 @@ export function HistoricalAnalysis() {
 
           <p className="text-sm text-pretty text-muted-foreground">
             Between 2005 and 2025, Bangalore experienced an unprecedented wave of urban
-            expansion. In the first decade (2005–2015), the &quot;Developed&quot; land use
-            class grew at a steady rate of 2.9% per year, primarily consuming peripheral
-            vegetation. However, the subsequent decade (2015–2025) witnessed an explosive
-            acceleration, with the developed area expanding at an alarming 7.3% annually.
-            This unchecked growth has come at a severe ecological cost: natural water
-            bodies saw an accelerated depletion, losing 1.8% of their area annually, while
-            vital wetland ecosystems were significantly fragmented — contributing directly
-            to the city&apos;s increasing urban heat island (UHI) effect.
+            expansion. In the first decade (2005–2015), built-up area grew by 3.10
+            percentage points (from 10.68% to 13.78%). However, the subsequent decade
+            (2015–2025) witnessed explosive acceleration — a 10.12 pp surge pushing
+            built-up to 23.90%. Water bodies suffered the most, declining by 11.26 pp
+            overall (from 46.94% to 35.68%), while vegetation fell from 41.85% to
+            38.91%, reflecting continued ecological pressure from urban sprawl.
           </p>
         </article>
       </div>

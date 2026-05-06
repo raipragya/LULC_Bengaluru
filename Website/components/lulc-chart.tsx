@@ -19,18 +19,18 @@ type DataPoint = {
 }
 
 const HISTORICAL: DataPoint[] = [
-  { year: 2005, developed: 18, vegetation: 58, wetland: 9, water: 15 },
-  { year: 2010, developed: 23, vegetation: 53, wetland: 8, water: 16 },
-  { year: 2015, developed: 30, vegetation: 47, wetland: 8, water: 15 },
-  { year: 2020, developed: 42, vegetation: 38, wetland: 7, water: 13 },
-  { year: 2025, developed: 54, vegetation: 30, wetland: 6, water: 10 },
+  { year: 2005, developed: 10.68, vegetation: 41.85, wetland: 0.53, water: 46.94 },
+  { year: 2010, developed: 12.23, vegetation: 41.69, wetland: 0.86, water: 45.22 },
+  { year: 2015, developed: 13.78, vegetation: 41.53, wetland: 1.19, water: 43.50 },
+  { year: 2020, developed: 18.84, vegetation: 40.22, wetland: 1.35, water: 39.59 },
+  { year: 2025, developed: 23.90, vegetation: 38.91, wetland: 1.51, water: 35.68 },
 ]
 
 const PROJECTED: DataPoint[] = [
-  { year: 2030, developed: 64, vegetation: 24, wetland: 5, water: 7 },
-  { year: 2035, developed: 71, vegetation: 19, wetland: 4, water: 6 },
-  { year: 2040, developed: 76, vegetation: 15, wetland: 4, water: 5 },
-  { year: 2045, developed: 80, vegetation: 12, wetland: 4, water: 4 },
+  { year: 2030, developed: 26.94, vegetation: 36.56, wetland: 3.17, water: 33.33 },
+  { year: 2035, developed: 29.97, vegetation: 34.21, wetland: 4.83, water: 30.98 },
+  { year: 2040, developed: 31.14, vegetation: 33.18, wetland: 6.76, water: 28.93 },
+  { year: 2045, developed: 32.30, vegetation: 32.15, wetland: 8.68, water: 26.87 },
 ]
 
 const FULL = [...HISTORICAL, ...PROJECTED]
@@ -79,7 +79,7 @@ export function LulcChart({
             tickLine={false}
             axisLine={false}
             tickFormatter={(v) => `${v}%`}
-            domain={[0, 100]}
+            domain={[0, 50]}
           />
           <Tooltip
             cursor={{ stroke: "var(--primary)", strokeOpacity: 0.4, strokeDasharray: "3 3" }}

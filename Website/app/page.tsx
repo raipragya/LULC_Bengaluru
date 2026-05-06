@@ -29,7 +29,7 @@ export default function Home() {
         <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-8 px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
           <div className="flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
             <Satellite className="h-3 w-3 text-primary" aria-hidden />
-            CA-ANN spatial modeling · v0.1
+            Deep learning spatial modeling · v0.1
           </div>
 
           <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
@@ -39,8 +39,8 @@ export default function Home() {
 
           <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             A scientific-grade analytics surface for Indian metros — fusing 20 years of
-            classified Landsat observations with a Cellular Automata-Artificial Neural
-            Network engine to project land use trajectories for 2035 and 2045.
+            classified Landsat observations with a deep learning engine to project
+            land use trajectories for 2035 and 2045.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -71,8 +71,8 @@ export default function Home() {
           />
           <Capability
             icon={<Brain className="h-4 w-4" aria-hidden />}
-            title="CA-ANN inference"
-            detail="Hybrid cellular automata + neural net learns spatial drivers."
+            title="Deep learning inference"
+            detail="Advanced machine learning engine learns spatial drivers."
           />
           <Capability
             icon={<LineChart className="h-4 w-4" aria-hidden />}
@@ -130,8 +130,8 @@ export default function Home() {
                 trained against ground-truth points and Dynamic World references.
               </p>
               <p>
-                Future projections combine a Markov chain transition matrix with an
-                artificial neural network that learns spatial drivers — slope,
+                Future projections combine a Markov chain transition matrix with a
+                deep learning model that learns spatial drivers — slope,
                 proximity to roads, prior land use, and population density — to weight
                 cell transition probabilities at each iteration.
               </p>

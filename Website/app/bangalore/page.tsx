@@ -43,7 +43,7 @@ export default function BangalorePage() {
                 Bangalore LULC Dashboard
               </h1>
               <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-                Two decades of classified observations, paired with a CA-ANN projection
+                Two decades of classified observations, paired with a deep learning projection
                 engine — explore Bangalore&apos;s urban transformation and what comes
                 next.
               </p>
@@ -66,7 +66,7 @@ export default function BangalorePage() {
         <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-2 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:px-6">
           <span>© {new Date().getFullYear()} Urban LULC Lab</span>
           <span className="font-mono text-[10px] uppercase tracking-wider">
-            CA-ANN · Bangalore release
+            Deep Learning · Bangalore release
           </span>
         </div>
       </footer>
